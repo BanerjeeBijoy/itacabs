@@ -148,12 +148,12 @@ button[type="submit"]:hover {
     gap: 0.5rem; /* Reduced gap between the boxes */
     flex-wrap: nowrap; /* Prevent boxes from wrapping */
     margin: 0 2rem; /* Adjusted margin */
+    overflow-x: auto; /* Enable horizontal scrolling for small screens */
 }
 
 /* Service box styles */
 .service {
-    flex: 1; /* Make the boxes flexible */
-    max-width: 100px; /* Set a maximum width for each box */
+    width: 6rem; /* Fixed width */
     height: 9rem; /* Fixed height */
     display: flex;
     flex-direction: column;
@@ -182,21 +182,12 @@ button[type="submit"]:hover {
         justify-content: space-between; /* Ensure space between the boxes */
         flex-wrap: nowrap; /* Prevent wrapping */
         gap: 0.5rem; /* Maintain small gap */
-        overflow-x: auto; /* Allow horizontal scrolling if necessary */
+        overflow-x: scroll; /* Allow horizontal scrolling if necessary */
     }
     
     .service {
-        flex: 1; /* Allow the boxes to shrink or grow */
-        max-width: 90px; /* Ensure they fit in a row */
-        height: 8rem; /* Slightly reduce height */
-    }
-
-    .service-icon {
-        width: 60%; /* Reduce icon size for small screens */
-    }
-
-    .service-text {
-        font-size: 0.6rem; /* Reduce font size */
+        width: 6.5rem; /* Slightly increase width to fit better */
+        height: 9rem; /* Maintain the height */
     }
 }
 
