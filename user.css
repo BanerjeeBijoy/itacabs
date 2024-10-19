@@ -182,13 +182,13 @@ button[type="submit"]:hover {
     .service-container {
         justify-content: space-between; /* Ensure space between the boxes */
         flex-wrap: nowrap; /* Prevent wrapping */
-        gap: 0.5rem; /* Maintain small gap */
+        gap: 0.3rem; /* Maintain small gap */
         overflow-x: scroll; /* Allow horizontal scrolling if necessary */
     }
     
     .service {
-        width: 5rem; /* Slightly increase width to fit better */
-        height: 8rem; /* Maintain the height */
+        width: 3rem; /* Slightly increase width to fit better */
+        height: 6rem; /* Maintain the height */
     }
 }
 
