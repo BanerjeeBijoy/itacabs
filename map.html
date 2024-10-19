@@ -111,6 +111,30 @@
         function redirectToCash() {
             window.location.href = "booked.html"; // Redirect to cash payment page
         }
+
+         document.querySelectorAll('.payment-button').forEach(button => {
+    button.addEventListener('touchstart', function() {
+        this.classList.add('hover-effect');
+    });
+
+    button.addEventListener('touchend', function() {
+        setTimeout(() => {
+            this.classList.remove('hover-effect');
+        }, 300); // Slight delay for smooth transition
+    });
+});
+
+document.querySelectorAll('.cab-option').forEach(option => {
+    option.addEventListener('touchstart', function() {
+        this.classList.add('hover-effect');
+    });
+
+    option.addEventListener('touchend', function() {
+        setTimeout(() => {
+            this.classList.remove('hover-effect');
+        }, 300); // Slight delay for smooth transition
+    });
+});
     </script>
 </body>
 </html>
