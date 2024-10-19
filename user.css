@@ -201,8 +201,8 @@ button[type="submit"]:hover {
     }
     
     .service {
-        width: 6rem; /* Slightly increase width to fit better */
-        height: 9rem; /* Maintain the height */
+        width: 8rem; /* Slightly increase width to fit better */
+        height: 10rem; /* Maintain the height */
     }
 }
 
