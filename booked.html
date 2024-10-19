@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cab Booked - ITACAB</title>
+    <link rel="stylesheet" href="booked.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="map-container" id="map"></div>
+        <div class="details">
+            <h3>Booking Details</h3>
+            <div class="loading-bar">
+                <div class="bar" id="loadingBar"></div>
+            </div>
+            <div class="time-display">
+                Estimated Time: <span id="eta">5 mins</span>
+            </div>
+            <div class="amount-otp">
+                <div>Amount: ₹<span id="amount">500</span></div>
+                <div>OTP: <span id="otp">1234</span></div>
+            </div>
+            <div class="driver-info">
+                <div>
+                    Driver Name: <span class="driver-name">BIJOY BANERJEE</span>
+                </div>
+                <div class="carname-number">
+                    <div>Car Name: <span id="amount">TOYOTA</span></div>
+                    <div><span id="otp">AB12C3456</span></div>
+                </div>
+            </div>
+            <div class="call-options">
+                <button onclick="callDriver()">Call Driver (9365419945)</button>
+                <button onclick="callSupport()">Call Support (9365419945)</button>
+            </div>
+            <button class="cancel-ride" onclick="cancelRide()">Cancel Ride</button>
+        </div>
+    </div>
+
+    <script>
+        let totalTime = 5 * 60; // Total time in seconds (15 minutes)
+        let intervalId;
+
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 28.6139, lng: 77.2090 }, // Center map to Delhi
+                zoom: 12,
+            });
+
+            // Example route
+            const directionsService = new google.maps.DirectionsService();
+            const directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map);
+
+            const start = { lat: 28.6139, lng: 77.2090 }; // User location
+            const end = { lat: 28.7041, lng: 77.1025 }; // Destination (for example)
+
+            const request = {
+                origin: start,
+                destination: end,
+                travelMode: google.maps.TravelMode.DRIVING,
+            };
+
+            directionsService.route(request, (result, status) => {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsRenderer.setDirections(result);
+                } else {
+                    console.error('Directions request failed due to ' + status);
+                }
+            });
+
+            startLoadingBar();
+        }
+
+        function startLoadingBar() {
+            const loadingBar = document.getElementById('loadingBar');
+            intervalId = setInterval(() => {
+                if (totalTime > 0) {
+                    totalTime--;
+                    const percent = (totalTime / (5 * 60)) * 100;
+                    loadingBar.style.width = percent + '%';
+                    document.getElementById('eta').innerText = Math.ceil(totalTime / 60) + ' mins';
+                } else {
+                    clearInterval(intervalId);
+                }
+            }, 1000 + Math.random() * 2000); // Random delay between 1 to 3 seconds
+        }
+
+        function callDriver() {
+            alert("Calling Driver: 9365419945");
+        }
+
+        function callSupport() {
+            alert("Calling Support: 9365419945");
+        }
+
+        function cancelRide() {
+            // Implement cancel ride functionality here
+            alert("Ride Cancelled");
+        }
+    </script>
+</body>
+</html>

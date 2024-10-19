@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITACAB - Cab Service</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body>
+    <header>
+        <h1>!TACAB.</h1>
+        <!-- Cab and Bus Buttons below Logo -->
+        <div class="buttons-container">
+            <button id="cab-button" class="cab active">Book a CAB!</button>
+            <button id="bus-button" class="bus">Book a BUS!</button>
+        </div>
+    </header>
+
+    <!-- Cab and Bus Booking Forms -->
+    <div id="cab-booking" class="form-container active">
+       <!--S <h2>Book a Cab</h2>-->
+       <form id="cab-form" action="map.html" method="GET"> <!-- Redirect to map.html -->
+        <input type="text" id="cab-pickup" name="pickup" placeholder="Pickup Location" required>
+        <input type="text" id="cab-dropoff" name="dropoff" placeholder="Drop-off Location" required>
+        <button type="submit">Find Cab</button>
+    </form> <!-- Add map here -->
+    </div>
+    
+    <div id="bus-booking" class="form-container">
+       <!-- <h2>Book a Bus</h2>-->
+        <form>
+            <select id="bus-pickup" name="bus-pickup">
+                <option value="" disabled selected>Select Pickup Location</option>
+                <option value="Location 1">Location 1</option>
+                <option value="Location 2">Location 2</option>
+                <option value="Location 3">Location 3</option>
+            </select>
+    
+            <select id="bus-dropoff" name="bus-dropoff">
+                <option value="" disabled selected>Select Drop-off Location</option>
+                <option value="Drop-off A">Drop-off A</option>
+                <option value="Drop-off B">Drop-off B</option>
+            </select>
+    
+            <input type="datetime-local" id="bus-datetime" name="bus-datetime" required>
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+ <!-- Add this section below the Bus Booking Form -->
+<!-- Add this section below the Bus Booking Form -->
+<section class="services">
+    <h2>Our Services</h2>
+    <div class="service-container">
+        <div class="service cab">
+            <img src="Cab-colour.png" alt="Cab Service" class="service-icon">
+            <span class="service-text">CAB Booking</span>
+        </div>
+        <div class="service bus">
+            <img src="Bus-colour.png" alt="Bus Service" class="service-icon">
+            <span class="service-text">BUS Booking</span>
+        </div>
+        <div class="service other">
+            <img src="others.png" alt="Bus Service" class="service-icon">
+                <span class="service-text">Others</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    </section>
+    
+    <!-- Footer with Fixed Icons -->
+    <footer>
+        <div class="footer-icons">
+            <a href="home.html"><img src="home.png" alt="Home" class="footer-icon"></a>
+            <a href="activity.html"><img src="activity.png" alt="Activity" class="footer-icon"></a>
+            <a href="profile.html"><img src="profile.png" alt="Profile" class="footer-icon"></a>
+        </div>
+    </footer>
+
+    <script src="user.js"></script>
+   
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map - ITACAB</title>
+    <link rel="stylesheet" href="map.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="map-container" id="map"></div>
+        <div class="cab-selection">
+            <h3>Select Your Cab</h3>
+            <button class="cab-option" onclick="openPaymentPopup('ITA Go!', 500)">
+                <div class="cab-info">
+                    <div class="cab-type">ITA Go!</div>
+                    <div class="seats">Seat 4</div>
+                </div>
+                <div class="price">₹500</div>
+            </button>
+            <button class="cab-option" onclick="openPaymentPopup('Auto', 300)">
+                <div class="cab-info">
+                    <div class="cab-type">Auto</div>
+                    <div class="seats">Seat 3</div>
+                </div>
+                <div class="price">₹300</div>
+            </button>
+            <button class="cab-option" onclick="openPaymentPopup('Standard', 400)">
+                <div class="cab-info">
+                    <div class="cab-type">Standard</div>
+                    <div class="seats">Seat 4</div>
+                </div>
+                <div class="price">₹400</div>
+            </button>
+            <button class="cab-option" onclick="openPaymentPopup('Premium', 700)">
+                <div class="cab-info">
+                    <div class="cab-type">Premium</div>
+                    <div class="seats">Seat 4</div>
+                </div>
+                <div class="price">₹700</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Payment Popup -->
+<div id="paymentPopup" class="popup" style="display: none;">
+    <div class="popup-content">
+        <h3 class="popup-header">!TACAB</h3>
+        <div class="amount-to-pay">
+            <div id="paymentAmount" style="color: green; font-weight: bold; font-size: 1.8rem;">/-</div> <!-- Moved amount to next line -->
+        </div>
+        <div class="payment-container">
+            <h4>Select Payment Mode</h4>
+            <div class="payment-mode">
+                <button class="payment-button" onclick="redirectToUPI()">UPI</button>
+                <button class="payment-button" onclick="redirectToCash()">Cash</button>
+            </div>
+        </div>
+        <button class="footer-button" onclick="closePaymentPopup()" style="width: 100%;">Cancel</button>
+    </div>
+</div>
+
+
+    <script>
+        let selectedCab = '';
+
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 20.5937, lng: 78.9629 }, // Center map to India
+                zoom: 5,
+            });
+
+            const directionsService = new google.maps.DirectionsService();
+            const directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map);
+
+            const start = { lat: 28.6139, lng: 77.2090 }; // Example: Delhi
+            const end = { lat: 19.0760, lng: 72.8777 }; // Example: Mumbai
+
+            const request = {
+                origin: start,
+                destination: end,
+                travelMode: google.maps.TravelMode.DRIVING,
+            };
+
+            directionsService.route(request, (result, status) => {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsRenderer.setDirections(result);
+                } else {
+                    console.error('Directions request failed due to ' + status);
+                }
+            });
+        }
+
+        function openPaymentPopup(cabType, amount) {
+            selectedCab = cabType; // Store selected cab type
+            document.getElementById("paymentAmount").innerText = amount + "/-"; // Display amount in the popup
+            document.getElementById("paymentPopup").style.display = "flex";
+        }
+
+        function closePaymentPopup() {
+            document.getElementById("paymentPopup").style.display = "none";
+        }
+
+        function redirectToUPI() {
+            alert("Redirecting to UPI payment for " + selectedCab + "...");
+            closePaymentPopup();
+        }
+
+        function redirectToCash() {
+            window.location.href = "booked.html"; // Redirect to cash payment page
+        }
+    </script>
+</body>
+</html>
