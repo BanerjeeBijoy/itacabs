@@ -187,7 +187,7 @@ button[type="submit"]:hover {
     }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 480px) {
     .service-container {
         flex-direction: row; /* Stack boxes vertically on small screens */
         align-items: center; /* Center align for a clean look */
