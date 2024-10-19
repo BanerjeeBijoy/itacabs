@@ -57,14 +57,14 @@ header {
 
 /* Show logo when button is at 15% width */
 .caab:not(.active) {
-    background-image: url('../img/user/can.png'); /* Path to your cab logo */
+    background-image: url('can.png'); /* Path to your cab logo */
     background-size: 2rem 2rem; /* Set size to 40px by 40px */
     background-repeat: no-repeat; /* Prevent background from repeating */
     background-position: center; /* Center the logo */
 }
 
 .buus:not(.active) {
-    background-image: url('../img/user/bus.png'); /* Path to your bus logo */
+    background-image: url('bus.png'); /* Path to your bus logo */
     background-size: 2rem 2rem; /* Set size to 40px by 40px */
     background-repeat: no-repeat; /* Prevent background from repeating */
     background-position: center; /* Center the logo */
