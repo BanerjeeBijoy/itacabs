@@ -139,13 +139,7 @@ button[type="submit"]:hover {
 
 
 
-
-/* Main styles for services section */
-.services {
-    text-align: center;
-    margin: 20px 0;
-}
-
+/
 /* Main styles for services section */
 .services {
     text-align: center;
@@ -156,9 +150,9 @@ button[type="submit"]:hover {
     display: flex;
     justify-content: center; /* Center the entire group of boxes */
     align-items: center;
-    gap: 0.5rem; /* Reduced gap between the boxes */
+    gap: 0.3rem; /* Reduced gap between the boxes */
     flex-wrap: wrap; /* Allow wrapping when needed */
-    margin: 0 2rem; /* Margin for mobile view */
+    margin: 0 3rem; /* Margin for mobile view */
 }
 
 /* General service box styles */
@@ -199,18 +193,19 @@ button[type="submit"]:hover {
 }
 
 /* Responsive layout for small screens (Realme 9 Pro 5G size) */
-@media (max-width: 480px) {
+@media (max-width: 580px) {
     .service-container {
         justify-content: space-between; /* Ensure space between the boxes */
         flex-wrap: nowrap; /* Prevent wrapping */
-        gap: 0.5rem; /* Maintain small gap */
+        gap: 0.3rem; /* Maintain small gap */
     }
     
     .service {
-        width: 6.5rem; /* Slightly increase width to fit better */
+        width: 6rem; /* Slightly increase width to fit better */
         height: 9rem; /* Maintain the height */
     }
 }
+
 
 .service-icon {
     width: 80%;
