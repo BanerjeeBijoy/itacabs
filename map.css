@@ -77,10 +77,20 @@ html, body {
     font-size: 1.3rem;
 }
 
-.cab-option:hover {
+/* Hover effect for desktop and focus/active for mobile */
+.cab-option:hover,
+.cab-option:focus,
+.cab-option:active {
     background-color: rgba(122, 216, 248, 0.4); /* Light transparent powder blue hover effect */
     transform: scale(1.2); /* Slightly larger hover effect */
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
+.cab-option.hover-effect {
+    background-color: rgba(122, 216, 248, 0.4); /* Light transparent powder blue */
+    transform: scale(1.2); /* Slightly larger hover effect */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
 
 .popup {
     display: none; /* Hidden by default */
@@ -156,10 +166,20 @@ html, body {
     
 }
 
-.payment-button:hover {
+/* Hover effect for desktop and focus/active for mobile */
+.payment-button:hover,
+.payment-button:focus,
+.payment-button:active {
     color: #28a745; /* Darker green on hover */
     background-color: rgba(122, 216, 248, 0.4); /* Light transparent powder blue hover effect */
     transform: scale(1.3); /* Slightly larger hover effect */
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+.payment-button.hover-effect {
+    color: #28a745;
+    background-color: rgba(122, 216, 248, 0.4);
+    transform: scale(1.3);
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 
