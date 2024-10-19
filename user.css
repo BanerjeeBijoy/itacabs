@@ -26,8 +26,9 @@ header {
     padding: 0 .5px;
 }
 
-.cab, .bus {
+.caab, .buus {
     width: 15%; /* Default width */
+    height: 3rem;
     padding: .3rem;
     margin: .3rem; /* Keep existing margin */
     border: none;
@@ -40,14 +41,14 @@ header {
     color: transparent; /* Hide text when logos are displayed */
 }
 
-.cab.active {
+.caab.active {
     width: 85%; /* Show text */
     height: 3rem;
     background-color: #40df65;
     color: white; /* Show text when active */
 }
 
-.bus.active {
+.buus.active {
     width: 85%; /* Show text */
     height: 3rem;
     background-color: #40df65;
@@ -55,15 +56,15 @@ header {
 }
 
 /* Show logo when button is at 15% width */
-.cab:not(.active) {
-    background-image: url('cab.png'); /* Path to your cab logo */
+.caab:not(.active) {
+    background-image: url('../img/user/can.png'); /* Path to your cab logo */
     background-size: 2rem 2rem; /* Set size to 40px by 40px */
     background-repeat: no-repeat; /* Prevent background from repeating */
     background-position: center; /* Center the logo */
 }
 
-.bus:not(.active) {
-    background-image: url('bus.png'); /* Path to your bus logo */
+.buus:not(.active) {
+    background-image: url('../img/user/bus.png'); /* Path to your bus logo */
     background-size: 2rem 2rem; /* Set size to 40px by 40px */
     background-repeat: no-repeat; /* Prevent background from repeating */
     background-position: center; /* Center the logo */
@@ -144,14 +145,14 @@ button[type="submit"]:hover {
     display: flex;
     justify-content: center; /* Center the entire group of boxes */
     align-items: center; /* Align boxes vertically */
-    gap: 0.2rem; /* Reduced gap between the boxes */
+    gap: 0.5rem; /* Reduced gap between the boxes */
     flex-wrap: wrap; /* Wrap the boxes if needed */
     margin: 0 2rem; /* Margin for mobile view */
 }
 
 .service {
-    width: 7rem; /* Set box width */
-    height: 10rem; /* Set box height */
+    width: 5rem; /* Set box width */
+    height: 7rem; /* Set box height */
     display: flex;
     flex-direction: column; /* Stack icon and text */
     align-items: center; /* Center horizontally */
@@ -164,10 +165,19 @@ button[type="submit"]:hover {
     text-align: center;
 }
 
-.service:hover {
-    background-color: rgba(122, 216, 248, 0.4); /* Light transparent powder blue hover effect */
+.service:hover, 
+.service:focus, 
+.service:active {
+    background-color: rgba(122, 216, 248, 0.4); /* Light transparent powder blue */
     transform: scale(1.3); /* Slightly larger hover effect */
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
+.service.hover-effect {
+    background-color: rgba(122, 216, 248, 0.4); /* Light transparent powder blue */
+    transform: scale(1.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
 
 .service-icon {
     width: 80%; /* Adjust to fill the box */
