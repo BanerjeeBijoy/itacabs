@@ -17,15 +17,21 @@ document.addEventListener('DOMContentLoaded', function() {
         busForm.classList.add('active');
         cabForm.classList.remove('active');
     });
-});
-document.querySelector('form').addEventListener('submit', function(event) {
-    const pickup = document.getElementById('cab-pickup').value;
-    const dropoff = document.getElementById('cab-dropoff').value;
-    const carType = document.getElementById('car-type').value;
-    const passengers = document.getElementById('passengers').value;
 
-    if (!pickup || !dropoff || !carType || !passengers) {
-        alert('Please fill out all fields.');
-        event.preventDefault(); // Stop form submission
-    }
+    // Add an event listener for the bus form submission
+    document.getElementById('bus-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+        const busPickup = document.getElementById('bus-pickup').value;
+        const busDropoff = document.getElementById('bus-dropoff').value;
+        const busDatetime = document.getElementById('bus-datetime').value;
+
+        // Check if all fields are filled
+        if (!busPickup || !busDropoff || !busDatetime) {
+            alert('Please fill out all fields.');
+            return; // Exit the function if validation fails
+        }
+
+        // Redirect to the available buses page
+        window.location.href = 'availbus.html';
+    });
 });
