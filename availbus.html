@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Buses - ITACAB</title>
+    <link rel="stylesheet" href="../css/user.css">
+    <style>
+        /* Styling for bus listings */
+        .bus-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            margin: 0 1rem;
+            border-bottom: 1px solid #ccc;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .bus-container:hover {
+            background-color: #f0f8ff; /* Light blue background on hover */
+            transform: scale(1.02); /* Slightly enlarge on hover */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+        }
+
+        .bus-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bus-arrival, .bus-departure {
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        .bus-price {
+            font-weight: bold;
+            color: green;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Available Buses</h1>
+</header>
+
+<main>
+    <div class="bus-listing">
+        <!-- Bus 1 -->
+        <div class="bus-container" onclick="redirectToSeatSelection()">
+            <div class="bus-details">
+                <span class="bus-name">Express Bus - Route 1</span>
+                <span class="bus-departure">Departure: 08:00 AM</span>
+                <span class="bus-arrival">Arrival: 11:00 AM</span>
+            </div>
+            <span class="bus-price">₹500</span>
+        </div>
+
+        <!-- Bus 2 -->
+        <div class="bus-container" onclick="redirectToSeatSelection()">
+            <div class="bus-details">
+                <span class="bus-name">Fast Track - Route 2</span>
+                <span class="bus-departure">Departure: 09:30 AM</span>
+                <span class="bus-arrival">Arrival: 01:30 PM</span>
+            </div>
+            <span class="bus-price">₹650</span>
+        </div>
+
+        <!-- Bus 3 -->
+        <div class="bus-container" onclick="redirectToSeatSelection()">
+            <div class="bus-details">
+                <span class="bus-name">Comfort Travels - Route 3</span>
+                <span class="bus-departure">Departure: 10:00 AM</span>
+                <span class="bus-arrival">Arrival: 02:00 PM</span>
+            </div>
+            <span class="bus-price">₹700</span>
+        </div>
+
+        <!-- Additional buses can be added similarly -->
+    </div>
+</main>
+
+<!-- Footer with Fixed Icons -->
+<footer>
+    <div class="footer-icons">
+        <a href="Landing_page.html"><img src="../img/user/home.png" alt="Home" class="footer-icon"></a>
+        <a href="activity.html"><img src="../img/user/activity.png" alt="Activity" class="footer-icon"></a>
+        <a href="profile.html"><img src="../img/user/profile.png" alt="Profile" class="footer-icon"></a>
+    </div>
+</footer>
+
+<script src="../js/user.js"></script>
+<script>
+    // JavaScript function to navigate to seat selection page
+    function redirectToSeatSelection() {
+        window.location.href = "selectseat.html"; // Redirect to the seat selection page
+    }
+</script>
+</body>
+</html>

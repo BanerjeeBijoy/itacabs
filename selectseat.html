@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Seats - ITACAB Bus</title>
+    <style>
+        /* Base Styles for Seat Selection Container */
+        .seat-selection-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 1rem;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
+            position: relative;
+            margin-bottom: 80px; /* Adjust space for the footer */
+        }
+
+        /* Header and Navigation - Container with Background */
+        .header-container {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            width: 100%;
+            
+        }
+
+        /* Title (Select Your Seat) */
+        .header-container h1 {
+            font-size: 1.2rem; /* Reduced font size for header */
+            margin: 0;
+            padding-left: 10px;
+        }
+
+        /* From - To and Back Button */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100%;
+        }
+
+        .header-bar h2 {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .back-button {
+            font-size: 1rem;
+            color: white;
+            background-color: #333;
+            padding: 8px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+
+        /* Seat Layout */
+        .seat-layout {
+            display: grid;
+            grid-template-columns: auto 1fr 1fr auto auto;
+            gap: 0.3rem;
+            background-color: #f7f7f7;
+            padding: 0.3rem;
+            border-radius: 8px;
+            width: 100%;
+            height: auto;
+            max-height: 70%;
+            margin-top: 1rem;
+        }
+
+        .seat {
+            width: 35px; /* Seat width */
+            height: 35px;
+            background-color: #d3d3d3;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 0.8rem;
+        }
+
+        /* Seat States */
+        .seat.available:hover { background-color: #a3d9a5; }
+        .seat.selected { background-color: #4CAF50; color: #fff; }
+        .seat.unavailable { background-color: #b0b0b0; cursor: not-allowed; }
+
+        /* Seat Legend */
+        .seat-legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .legend-item { display: flex; align-items: center; margin: 0 1rem; font-size: 0.8rem; }
+        .legend-color { width: 15px; height: 15px; margin-right: 0.3rem; border-radius: 4px; }
+        .available-color { background-color: #d3d3d3; }
+        .selected-color { background-color: #4CAF50; }
+        .unavailable-color { background-color: #b0b0b0; }
+
+        /* Proceed Button (Fixed Footer) */
+        .proceed-button {
+            padding: 0.8rem 1.5rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            left: 0;
+            z-index: 1000;
+            opacity: 0.6; /* Disabled opacity */
+            pointer-events: none; /* Disable click by default */
+        }
+
+        .proceed-button.enabled {
+            opacity: 1; /* Enable opacity when selected */
+            pointer-events: auto; /* Enable click */
+        }
+
+        .proceed-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Mobile & Desktop Responsive View */
+        @media screen and (max-width: 768px) {
+            .seat-layout {
+                width: 46%; /* Full width for mobile */
+                height: 65%; /* Adjust for mobile */
+            }
+            .seat {
+                width: 40px;
+                height: 35px;
+                font-size: 0.7rem; /* Smaller font size for mobile */
+            }
+        }
+
+        /* Desktop View */
+        @media screen and (min-width: 769px) {
+            .seat-layout {
+                width: 320px; /* Fixed width for desktop */
+                height: 300px; /* Adjusted height for desktop */
+            }
+            .seat {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem; /* Adjust font size for desktop */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header-container">
+    <h1>Select Your Seat</h1>
+    <div class="header-bar">
+        <h2>From - To</h2>
+        <button class="back-button" onclick="window.history.back()">Back</button>
+    </div>
+</div>
+
+<main>
+    <div class="seat-selection-container">
+        <!-- Seat Layout with 32 Seats, Two Booked Seats -->
+        <div class="seat-layout">
+            <div class="seat available" onclick="toggleSeat(this)">1</div>
+            <div></div> <!-- Aisle gap -->
+            <div></div> <!-- Aisle gap -->
+            <div class="seat available" onclick="toggleSeat(this)">2</div>
+            <div class="seat unavailable">3</div>
+
+            <div class="seat available" onclick="toggleSeat(this)">4</div>
+            <div></div> <!-- Aisle gap -->
+            <div></div> <!-- Aisle gap -->
+            <div class="seat unavailable">5</div>
+            <div class="seat available" onclick="toggleSeat(this)">6</div>
+
+            <div class="seat available" onclick="toggleSeat(this)">7</div>
+            <div></div> <!-- Aisle gap -->
+            <div></div> <!-- Aisle gap -->
+            <div class="seat unavailable">8</div>
+            <div class="seat unavailable">9</div>
+
+            <div class="seat available" onclick="toggleSeat(this)">10</div>
+            <div></div> <!-- Aisle gap -->
+            <div></div> <!-- Aisle gap -->
+            <div class="seat available" onclick="toggleSeat(this)">11</div>
+            <div class="seat unavailable">12</div>
+
+            <div class="seat available" onclick="toggleSeat(this)">13</div>
+            <div></div> <!-- Aisle gap -->
+            <div></div> <!-- Aisle gap -->
+            <div class="seat available" onclick="toggleSeat(this)">14</div>
+            <div class="seat unavailable">15</div>
+
+            <div class="seat available" onclick="toggleSeat(this)">16</div>
+            <div></div> <!-- Aisle gap -->
+            <div></div> <!-- Aisle gap -->
+            <div class="seat available" onclick="toggleSeat(this)">17</div>
+            <div class="seat unavailable">18</div>
+
+            <div class="seat available" onclick="toggleSeat(this)">19</div>
+            <div></div> <!-- Aisle gap -->
+            <div></div> <!-- Aisle gap -->
+            <div class="seat available" onclick="toggleSeat(this)">20</div>
+            <div class="seat unavailable">21</div>
+
+            <div class="seat available" onclick="toggleSeat(this)">22</div>
+            <div></div> <!-- Aisle gap -->
+            <div></div> <!-- Aisle gap -->
+            <div class="seat available" onclick="toggleSeat(this)">23</div>
+            <div class="seat unavailable">24</div>
+
+            <div class="seat available" onclick="toggleSeat(this)">25</div>
+            <div></div> <!-- Aisle gap -->
+            <div></div> <!-- Aisle gap -->
+            <div class="seat available" onclick="toggleSeat(this)">26</div>
+            <div class="seat unavailable">27</div>
+
+            <div class="seat available" onclick="toggleSeat(this)">28</div>
+            <div class="seat available" onclick="toggleSeat(this)">29</div>
+            <div class="seat available" onclick="toggleSeat(this)">30</div>
+            <div class="seat available" onclick="toggleSeat(this)">31</div>
+            <div class="seat available" onclick="toggleSeat(this)">32</div>
+        </div>
+
+        <!-- Seat Legend -->
+        <div class="seat-legend">
+            <div class="legend-item">
+                <div class="legend-color available-color"></div> Available
+            </div>
+            <div class="legend-item">
+                <div class="legend-color selected-color"></div> Selected
+            </div>
+            <div class="legend-item">
+                <div class="legend-color unavailable-color"></div> Booked
+            </div>
+        </div>
+    </div>
+</main>
+
+<button class="proceed-button" id="proceedBtn" disabled>Proceed to Booking Summary</button>
+
+<script>
+    // Toggle seat selection
+    function toggleSeat(seat) {
+        if (seat.classList.contains('unavailable')) return;
+        seat.classList.toggle('selected');
+        updateProceedButton();
+    }
+
+    // Enable or disable the "Proceed to Summary" button based on seat selection
+    function updateProceedButton() {
+        const selectedSeats = document.querySelectorAll('.seat.selected');
+        const proceedButton = document.getElementById('proceedBtn');
+        if (selectedSeats.length > 0) {
+            proceedButton.classList.add('enabled');
+            proceedButton.removeAttribute('disabled');
+        } else {
+            proceedButton.classList.remove('enabled');
+            proceedButton.setAttribute('disabled', 'true');
+        }
+    }
+
+    // Redirect to booking summary page on button click
+    document.getElementById('proceedBtn').addEventListener('click', function() {
+        if (this.classList.contains('enabled')) {
+            window.location.href = 'bookingsummary.html'; // Redirect to the booking summary page
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+/* General Page Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff; /* White page background */
+    color: #333;
+}
+
+.activity-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Toggle Buttons at the Top */
+.toggle-buttons {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333; /* Black background for toggle buttons */
+    padding: 1rem 0;
+}
+
+.toggle-buttons button {
+    width: 45%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745; /* Green color for buttons */
+    color: #fff;
+}
+
+.toggle-buttons button.active {
+    background-color: #007bff;
+}
+
+/* Booking History Section */
+#historyContainer {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+/* Styling individual history items */
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0; /* Separator line between history items */
+}
+
+/* Date styling with date on top and month below */
+.history-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #28a745; /* Green background for date circle */
+    border-radius: 50%;
+    color: #fff; /* White font */
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.history-date .day {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.history-date .month {
+    font-size: 0.7rem;
+}
+
+.history-info {
+    flex-grow: 1;
+    margin-left: 1rem;
+}
+
+.history-price {
+    color: #28a745; /* Green color for price */
+    font-weight: bold;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333; /* Black footer background */
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-icon {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    .form-container {
+        margin: 0 1.5rem;
+    }
+
+    .services {
+        margin: 0 1.5rem;
+    }
+}
